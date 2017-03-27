@@ -1,0 +1,49 @@
+{% extends "course/index.html" %}
+{% block content %}
+<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="{% url 'course:index' %}">Главная</a></li>
+			<li class="active">Курсы</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-sm-9 maincontent">
+				<header class="page-header">
+					<h2 class="page-title">Список курсов</h2>
+					<p>Доступные курсы: </p>
+					<!-- button -->
+				</header>
+				
+				<!-- Intro -->
+            	<div class="container text-left">
+            		<div class="row">
+                        {% if latest_course_list %}
+                            {% for course in latest_course_list %}
+                            <div class="course">
+                                <img class="bord" src="{{ course.image_url }}"> 
+                                <div>
+                                <a href="{% url 'course:detail_course' course.id %}">{{ course.course_name }}</a>
+                                <p> {{ course.details }}</p>	
+                                </div>
+                            </div><br>
+                            {% endfor %}
+                        {% else %}
+                            <p>No course are available.</p>
+                        {% endif %}
+                    </div>
+        		</div>
+				
+			</article>
+			<!-- /Article -->
+	</div>	
+</div>
+
+
+
+{% endblock %}

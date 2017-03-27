@@ -1,0 +1,55 @@
+{% extends "course/index.html" %}
+
+{% block content %}
+<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="{% url 'index' %}">Главная</a></li>
+			<li><a href="{% url 'course:index' %}">Курсы</a></li>
+			<li class="active">Задания</li>
+		</ol>
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-sm-12 maincontent">
+				<header class="page-header">
+					<h2 class="page-title">{{course.course_name}}</h2>
+					<p>Доступные задания:</p>
+					<!-- button -->
+				</header>
+				
+				<!-- Intro -->
+            	<div class="container text-left">
+            		<div class="row">
+            		    <div class="col-sm-7" id="task2">
+                        {% if task_list %}
+                            {% for task in task_list %}
+                            
+                                <div class="grey_div" style="margin:5px;">
+                                <i class="fa fa-cogs fa-2x" id="ico"></i>&nbsp; <a href="{% url 'course:task' course.id forloop.counter %}"> {{ task.title }}</a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                        {% if test_list %}
+                            {% for test in test_list %}
+                                <div class="grey_div" style="margin:5px;">
+                                <i class="fa fa-cogs fa-2x" id="ico"></i>&nbsp; <a href="{% url 'test_task:index' course.id forloop.counter %}"> Тест. {{ test.name_test }}</a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                        <div class="col-sm-4 course_details"> {{course.details}}</div>
+                    </div>
+        		</div>
+				
+			</article>
+			<!-- /Article -->
+	</div>	
+</div>  
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% for test_question in test_question_list%}
+    <div class="test-task">
+        <div class="test-task__number">Вопрос 1:</div>
+        <div class="test-task__content"><p>{{test_question.question_text|linebreaksbr}}</p></div>
+        <div class="test-task-answers">
+            <div class="test-task-answers__title">Выберите ответ:</div>
+            {% for answer in answer_list %}
+                {% if  test_question == answer.test_question %}
+                <div class="test-task-answer __radio">
+                    <label class="label-task"><input type="radio" value="{{answer.answer}}" name="{{test_question.id}}"><b>1</b><span>{{ answer.answer }}</span></label>
+                </div>
+                {%  endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}

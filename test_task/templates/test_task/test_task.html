@@ -1,0 +1,58 @@
+{% extends "course/index.html" %}
+
+{% block content %}
+<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container-fluid">
+    <div class="center-block">
+		<ol class="breadcrumb">
+			<li><a href="{% url 'index' %}">Главная</a></li>
+			<li><a href="{% url 'course:index' %}">Курсы</a></li>
+			<li class="active">Тест</li>
+		</ol>
+		</div>
+				
+		<!-- Intro -->
+   		<div class="row cont">
+   		    {% if test %}
+   		    	<div class="col-sm-7 test-task-block center-block">
+   		    		<div class="task">
+   		    		    <h3>Тест. {{ test.name_test }}</h3>
+   		    		    <div class="test-wrapper">
+                          <div class="test-content"><p style="text-align: center;" data-mce-style="text-align: center;"><strong>Инструкция по выполнению работы</strong></p>
+                          <p>Экзаменационная работа состоит из двух частей, включающих в себя 40 заданий. Часть 1 содержит 33 задания с кратким ответом. Часть 2 содержит 7 заданий с развёрнутым ответом.</p>
+                          <p>Ответы к заданиям 26–33 записываются в виде последовательности цифр. Эту бланк ответов № 1.</p>
+                          <p>Баллы, полученные Вами за выполненные задания, суммируются. Постарайтесь выполнить как можно больше заданий и набрать наибольшее количество баллов.</p>
+                          <p style="text-align: center;" data-mce-style="text-align: center;"><strong>Желаем успеха!</strong></p></div>
+                          <button class="test-run btn btn-warning center-block">Начать</button>
+                    </div>
+   		    		    
+   		    		    
+   		    		    <div class="test-tasks">
+   		    		    <!-- ФОРМА ВОПРОСА -->
+   		    		    <form id="tasks" action="{% url 'test_task:index' course_id test_task_id %}" class="test-tasks-form">
+                            <div class="test-tasks-wrapper">
+                                
+                            </div>
+                            <div class="test-tasks-form-buttons">
+                              <span class="btn btn-warning botton-task btn-test" id="skip">Пропустить</span>
+                              <span class="btn btn-warning botton-task btn-test" id="check">Ответить</span>
+                            </div>
+                        </form>
+                        </div>   		    		    
+   		    		    
+   		    		    <!-- РЕЗУЛЬТАТЫ -->
+   		    		    <div class="test-result">
+   		    		      
+
+                  </div>    
+   		    		</div>
+   				  </div>
+            {% else %}
+                <p>No course are available.</p>
+            {% endif %}
+        </div>
+    </div>
+				
+{% endblock %}

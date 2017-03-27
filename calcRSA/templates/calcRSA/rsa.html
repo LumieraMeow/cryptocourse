@@ -1,0 +1,208 @@
+{% extends "course/index.html" %}
+
+{% block content %}
+<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-sm-9 maincontent">
+				<header class="page-header">
+					<h2 class="page-title">Калькулятор RSA</h2>
+				</header>
+				
+				<!-- Intro -->
+            	<div class="container text-left ">
+            	    <div class="gener-key">
+            	        <form class="form-inline key" method="POST">
+            	        	{% csrf_token %}
+            	            <h3>ШАГ1. Генерация ключей</h3>
+            	            <p>Вам необходимо выбрать любые большие простые числа <b>p</b> и <b>q</b>. 
+            	            Простые числа — это целые положительные числа больше единицы, которые деляться только само себя и единицу.
+            	            Введите числа <b>p</b> и <b>q</b>.</p>
+            	            <center>
+	            	            <div class="block-f">
+		            	            <p><div class="form-group has-feedback">
+		                	            <label for="p" class="control-label">p:</label>
+		                	            <input type="text" class="form-control" name="p"  required/>
+		            	            </div>
+		            	            <div class="form-group has-feedback">
+		                	            <label for="q" class="control-label">q:</label>
+		                	            <input type="text" class="form-control" name="q"  required/>
+		            	            </div></p>
+		            	            <p>
+		            	            	<button type="submit" class="btn btn-warning disabled" id="button">Проверить</button>
+		            	            </p>
+		            	            <p>Когда выбраны простые числа p и q, необходимо определить число <b>n равное p*q</b>, и функцию Эйлера <b>φ = (p-1)*(q-1)</b>.</p>
+		            	            
+		            	            <div>
+		            	            	<label for="n"  class="control-label">n : </label>
+		            	            	<input type="text" class="form-control" name="n"/>
+		            	            </div>
+		            	            <div>
+		            	            	<label for="f"  class="control-label"> φ : </label>
+		            	            	<input type="text" class="form-control" name="f"/>
+		            	            </div>
+	            	            </div>
+	            	            <div class="block-f">
+		            	            <div>
+		            	            <p>Для генерации ключей необходимо найти числа e и d. Это можно сделать путем факторизации чисел, которіе взаимно просты с функцией Эйлера. 
+		            	            Ниже приведены некоторые из них. Выберите любое число, факторизируйте его и получите числа e и d.</p>
+		            	            <label for="f"  class="control-label">Числа, взаимно простые с функцией Эйлера:</label>
+		            	            <textarea class="d_list form-control" rows="5" cols="38" > </textarea>
+		            	            </div>
+	            	            </div>
+            	            </center>
+            	        </form>
+            	    </div>
+            	    <div class="gener-key">
+            	    	<form class="form-inline factoring" method="POST">
+            	        	{% csrf_token %}
+            	        	<h3>ШАГ2. Факторизация чисел.</h3>
+            	        	<center>
+            	        		<div class="block-fract">
+            	        			<p> Введите число, которое хотите разложить на множители и нажмите кнопку "Разложить".</p>
+		            	        	<label for="k"  class="control-label">Число: </label>
+		            	            <input type="text" class="form-control" name="k" required/>
+		            	            <button type="submit" class="btn btn-warning" id="factoring">Разложить</button>
+            	        		</div>
+            	        		<div class="block-fract">
+            	        			<h4>Результат:</h4>
+            	        			
+            	        			<b><h3 class="data"></h3></b>
+            	        		</div>
+	                	     </center>
+            	        </form>
+            	    </div>
+            	    
+            	    <div class="gener-key">
+            	    	<form class="form-inline gkey" method="POST">
+            	        	{% csrf_token %}
+	            	        <h3>ШАГ3. Генерация ключей.</h3>
+	            	        <p> После того, как была найдена подходящая пара чисел, необходимо проверить можно ли использовать их как компоненты e и d ключей RSA.</p>
+	            	        <center><div>
+	            	        	<div class="block-key">
+				            		<h4>Введите выбранные числа:</h4>
+				            		<p>
+				            			<label for="e"  class="control-label">e : </label>
+				            			<input type="text" class="form-control" name="e" required/>
+				            	    </p>
+				            	    <p>
+				            	    	<label for="d"  class="control-label"> d : </label>
+				            	    	<input type="text" class="form-control" name="d" required/>
+				            	    </p>
+				            	    <p>
+				            	        <label for="n"  class="control-label">n : </label>
+				            	        <input type="text" class="form-control" id="n" name="n" required/>
+				            	    </p>
+				            	    <p>
+				            	        <label for="f"  class="control-label"> φ : </label>
+				            	        <input type="text" class="form-control" name="f" required/>
+				            	    </p>
+			            	        <button type="submit" class="btn btn-warning" id="gkey">Генерировать</button>  
+	            	        	</div>
+
+			            	    <div class="block-key">
+			            	    	<h4>Результат:</h4>
+			            	    	<p class="p-key">Значения e и d удовлетворяют следующим условиям:</p>
+					            	<p class="p-key">1. Число е взаимно простое с функцией Эйлера (p-1)*(q-1)</p>
+				            	    <p class="p-key">2. Число d взаимно простое с функцией Эйлера (p-1)*(q-1)</p>
+				            	    <p class="p-key">3. Соотношение (e*d) mod ((p-1)*(q-1))=1 истинно.</p>
+				            	    <br>
+				            	    <b><h4 class="p-key public-key"></h4></b>
+				            	    <b><h4 class="p-key private-key"></h4></b>
+				            	            	
+				            	    <p class="error-key"></p>
+			            	    </div>
+	            	        </div></center>
+            	        </form>
+            	    </div>
+            	    <div class="gener-key">
+            	    	<form class="encryption" method="POST">
+            	        	{% csrf_token %}
+	            	        <h3>ШАГ4. Шифрование и разшифровка.</h3>
+	            	        <p> Для того, чтобы <b>зашифровать</b> данные по открытому ключу {e,n}, необходимо разбить шифруемый текст на блоки, 
+	            	        каждый из которых может быть представлен в виде числа M(i)=0,1,2..., n-1( т.е. каждое число должно быть меньше n).
+	            	        </p>
+	            	        <p>Это можно сделать используя таблицу кодировки <a href="#openModal">Windows-1251 (СР1251)</a>, поставив в соответствие каждой букве число.
+							Затем можно зашифровать текст, рассматриваемый как последовательность чисел M(i).</p>
+
+							<div id="openModal" class="modalDialog">
+							    <div>
+							        <a href="#close" title="Закрыть" class="close">X</a>
+							        <h3>Windows-1251 (СР1251)</h3>
+							        <p><img src="/static/images/win1251.jpg" alt="Windows-1251 (СР1251)"></p>
+							    </div>
+							</div>
+
+	            	       <p>Шифрование происходит по формуле: <b>C<sub>i</sub>=(M<sub>i</sub><sup>e</sup>)mod n</b>.</p>
+							<p>Чтобы <b>расшифровать</b> эти данные, используя секретный ключ <b>{d,n}</b>, 
+							необходимо выполнить следующие вычисления: <b>M<sub>i</sub>=(C<sub>i</sub><sup>d</sup>)mod n</b>. 
+							В результате будет получено множество чисел M(i), которые представляют собой исходный текст.</p>
+							<p>Используя таблицу кодировки СР1251, поставив в соответствие каждому числу символ, получим исходное сообщение.</p>
+							<p><b>ВАЖНО:</b> Для шифрования и расшифровки необходимо вводить сообщения посимвольно в числовом формате.</p>
+	            	        <center><div>
+	            	        	<div class="block-cipher">
+				            		<h4>Введите ключи:</h4>
+				            		<br>
+				            		<p>
+				            			<label for="key_e"  class="control-label">Открытый ключ: (</label>
+				            			<input type="text" class="rsa-key" name="key_e" required/>
+				            	        <label for="key_n"  class="control-label">;</label>
+				            	        <input type="text" class="rsa-key" name="key_n" required/>
+				            	        <label for="key_n"  class="control-label">)</label>
+				            	    </p>
+				            	    <p>
+				            	        <label for="key_d"  class="control-label">Закрытый ключ: (</label>
+				            			<input type="text" class="rsa-key" name="key_d" required/>
+				            	        <label for="key_n"  class="control-label">;</label>
+				            	        <input type="text" class="rsa-key" name="key_n" required/>
+				            	        <label for="key_n"  class="control-label">)</label>
+				            	    </p>
+	            	        	</div>
+
+								<div class="block-cipher">
+			            	    	<h4>Шифрование:</h4>
+			            	    	<p>
+			            	    		<label for="msg"  class="control-label">Сообщение:</label>
+				            			<input type="text" class="form-control" name="msg" pattern="^[ 0-9]+$"/>
+			            	    	</p>
+			            	    	<p>
+			            	    		<input  type="submit" class="btn btn-warning" id="cipher-button" value="Зашифровать"/>
+			            	    	</p>
+			            	    	<p>
+			            	    		<label for="сipher"  class="control-label">Шифр:</label>
+				            	    	<input type="text" class="form-control" name="cipher"/>
+			            	    	</p>
+			            	    	
+			            	    </div>
+			            	    
+			            	    <div class="block-cipher">
+			            	    	<h4>Расшифровка:</h4>
+			            	    	<p>
+			            	    		<label for="сipher"  class="control-label">Шифр:</label>
+				            	    	<input type="text" class="form-control" name="cipher2" pattern="^[ 0-9]+$"/>
+			            	    	</p>
+			            	    	<p>
+			            	    		<input type="submit" class="btn btn-warning" id="gkey" value="Расшифровать"/>
+			            	    	</p>
+			            	    	<p>
+			            	    		<label for="decipher"  class="control-label">Сообщение:</label>
+				            			<input type="text" class="form-control" name="decipher" />
+			            	    	</p>
+				            	    
+			            	    </div>
+	            	        </div></center>
+            	        </form>
+            	    </div>
+            		
+        		</div>
+				
+			</article>
+			<!-- /Article -->
+	</div>	
+</div>       
+{% endblock %}

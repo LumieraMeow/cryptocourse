@@ -1,0 +1,30 @@
+.tooltip {
+	position: relative;
+	}
+.tooltip em {
+	display: none;
+	}
+.tooltip:hover em {
+	font-style: normal;
+	display: block;
+	position: absolute;
+ 	background: #000;
+	color: #FFF;
+	padding: 3px 5px;
+	bottom: 22px;
+	right: 0;
+	box-shadow: 0 0 5px #ccc;
+ 	border-radius: 5px;
+	-webkit-border-radius: 5px;
+ 	-moz-border-radius: 5px;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	-moz-box-shadow: 0 0 5px #ccc;
+}
+.tooltip:focus  {
+	position: absolute;
+	bottom: -7px;
+	right: 5px;
+	border-top: 7px solid #000;
+	border-left: 7px solid transparent;
+	display: block;
+}

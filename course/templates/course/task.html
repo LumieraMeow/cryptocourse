@@ -1,0 +1,46 @@
+{% extends "course/index.html" %}
+
+{% block content %}
+<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container-fluid">
+
+		<ol class="breadcrumb">
+			<li><a href="{% url 'index' %}">Главная</a></li>
+			<li><a href="{% url 'course:index' %}">Курсы</a></li>
+			<li class="active">Задания</li>
+		</ol>
+			
+				
+		<!-- Intro -->
+   		<div class="row cont">
+   		    {% if task %}
+   		    	
+   		    	<div class="col-sm-6 task-block">
+   		    		<div class="task">
+   		    			<h3>Задание</h3>
+   		    			{{task.task|linebreaksbr}}
+   		    		</div>
+					<form action="{% url 'course:task' course_id task_id %}" method="post" id="task">
+						{% csrf_token %}
+   		    			<input class="input-task" name="inputtask" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+   		    			{% if next_task %}
+		   		   		<center><a href="{% url 'course:task' course_id next_task %}"  id="button-task" type="button" class="btn btn-warning disabled">Next</a></center>
+						{% else %}
+						<center><a href="{% url 'test_task:index' course_id test_id %}"  id="button-task" type="button" class="btn btn-warning disabled">Next</a></center>
+		   		   		{% endif %}
+		   		    </form>
+   				</div>
+   				<div class="col-sm-5 theory "> 
+	   				<h3>Задание</h3>
+	   				{{task.theory|linebreaksbr}}
+   				</div>
+
+            {% else %}
+                <p>No course are available.</p>
+            {% endif %}
+        </div>
+    </div>
+				
+{% endblock %}

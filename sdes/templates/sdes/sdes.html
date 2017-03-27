@@ -1,0 +1,821 @@
+{% extends "course/index.html" %}
+
+{% block content %}
+<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-sm-9 maincontent">
+				<header class="page-header">
+					<h2 class="page-title">Калькулятор SDES </h2>
+				</header>
+				
+				<!-- Intro -->
+            	<div class="container text-left ">
+            	    <div class="gener-key">
+            	    	<h2>1. Генерация подключей</h2>
+            	    	<center>
+            	    		<p>Введите 10-битный ключ.</p>
+	            	    	<form class="form-inline sdes-key">
+	            	    		<div class="">
+	            	        	<table class="table table-bordered">
+	            	            <tr>
+	            	                <td colspan = "10"><b>10-битный ключ</b></td>
+	            	            </tr>
+	            	            <tr>
+	            	                <td>1</td>
+	            	                <td>2</td>
+	            	                <td>3</td>
+	            	                <td>4</td>
+	            	                <td>5</td>
+	            	                <td>6</td>
+	            	                <td>7</td>
+	            	                <td>8</td>
+	            	                <td>9</td>
+	            	                <td>10</td>
+	            	            </tr>
+	            	            <tr>
+	            	                <td><input type="text" id="bin-key10" name="1" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="2" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="3" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="4" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="5" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="6" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="7" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="8" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="9" pattern="[0-1]" maxlength="1" required/></td>
+	            	                <td><input type="text" id="bin-key10" name="10" pattern="[0-1]" maxlength="1" required/></td>
+	            	            </tr>
+	            	            <tr>
+	            	                <td colspan = "10"><b>P-10</b></td>
+	            	            </tr>
+	            	            <tr>
+	            	                <td>3</td>
+	            	                <td>5</td>
+	            	                <td>2</td>
+	            	                <td>7</td>
+	            	                <td>4</td>
+	            	                <td>10</td>
+	            	                <td>1</td>
+	            	                <td>9</td>
+	            	                <td>8</td>
+	            	                <td>6</td>
+	            	            </tr>
+	            	            <tr>
+	            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step1_3"></td>
+	            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step1_5"></td>
+	            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step1_2"></td>
+	            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step1_7"></td>
+	            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step1_4"></td>
+	            	                <td style="background-color: lightskyblue" id="step1_10"></td>
+	            	                <td style="background-color: lightskyblue" id="step1_1"></td>
+	            	                <td style="background-color: lightskyblue" id="step1_9"></td>
+	            	                <td style="background-color: lightskyblue" id="step1_8"></td>
+	            	                <td style="background-color: lightskyblue" id="step1_6"></td>
+	
+	            	            </tr>
+	            	        </table>
+	            	            <div>На первом этапе выполняется начальная перестановка битов ключа Р-10.</div>
+	            	            <input type="submit" class="btn btn-warning sdes" name="submit1" id="step1" value="Выполнить"/>
+	            	            </div><br>
+	            	            <div class="block-sdes2">
+	            	            	<div class="LS">
+	            	            	<div>После применения операции перестановки данные разделяются на две равные части по пять бит
+										 каждая, и отдельно для каждой из частей выполняется циклический сдвиг
+										 влево на одну позицию (LS-1).</div>
+									<input type="submit" class="btn btn-warning sdes" name="submit2" id="step3" value="Выполнить"/>
+		            	        	<table class="table table-bordered">
+			            	            <tr>
+			            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step2_3"></td>
+			            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step2_5"></td>
+			            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step2_2"></td>
+			            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step2_7"></td>
+			            	                <td style="background-color: rgba(173, 255, 47, 0.7);" id="step2_4"></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "5"><b>LS-1</b></td>
+			            	            </tr>
+			            	            <tr style="background-color: white;">
+			            	                <td id="step3_5"></td>
+			            	                <td id="step3_2"></td>
+			            	                <td id="step3_7"></td>
+			            	                <td id="step3_4"></td>
+			            	                <td id="step3_3"></td>
+			            	            </tr>
+			            	        </table>
+		            	        	<table class="table table-bordered">
+			            	            <tr style="background-color: white;">
+			            	            	<td style="background-color: lightskyblue" id="step2_10"></td>
+			            	            	<td style="background-color: lightskyblue" id="step2_1"></td>
+			            	                <td style="background-color: lightskyblue" id="step2_9"></td>
+			            	                <td style="background-color: lightskyblue" id="step2_8"></td>
+			            	                <td style="background-color: lightskyblue" id="step2_6"></td>
+			            	                
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "5"><b>LS-1</b></td>
+			            	            </tr>
+			            	            <tr style="background-color: white;">
+			            	            	<td id="step3_1"></td>
+			            	                <td id="step3_9"></td>
+			            	                <td id="step3_8"></td>
+			            	                <td id="step3_6"></td>
+			            	                <td id="step3_10"></td>
+			            	            </tr>
+			            	        </table>
+		            	        	</div>
+		            	        	<br>
+		            	        	<div>К полученным данным применяется применяется
+										 перестановка P8. В результате применения этой перестановки из 10-
+										 битового ключа сначала выбираются, а затем переставляются 8 битов.
+										 В результате этой операции получается первый подключ (K1).</div>
+		            	        	<input type="submit" class="btn btn-warning sdes" name="submit3" id="step5" value="Выполнить"/>
+		            	        	<table class="table table-bordered">
+		            	            <tr>
+		            	                <td>1</td>
+		            	                <td>2</td>
+		            	                <td>3</td>
+		            	                <td>4</td>
+		            	                <td>5</td>
+		            	                <td>6</td>
+		            	                <td>7</td>
+		            	                <td>8</td>
+		            	                <td>9</td>
+		            	                <td>10</td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_5"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);"id="step4_2"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_7"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_4"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_3"></td>
+										<td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_1"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_9"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_8"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_6"></td>
+		            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step4_10"></td>
+		            	            </tr>
+		            	            <tr>
+		            	            	<td rowspan = "4"></td>
+		            	                <td colspan = "8"><b> P - 8 </b></td>
+		            	                <td rowspan = "4"></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td>6</td>
+		            	                <td>3</td>
+		            	                <td>7</td>
+		            	                <td>4</td>
+		            	                <td>8</td>
+		            	                <td>5</td>
+		            	                <td>10</td>
+		            	                <td>9</td>
+		            	            </tr>
+		            	            <tr style="background-color: white;">
+		            	                <td id="step5_1"></td>
+		            	                <td id="step5_7"></td>
+		            	                <td id="step5_9"></td>
+		            	                <td id="step5_4"></td>
+		            	                <td id="step5_8"></td>
+		            	                <td id="step5_3"></td>
+		            	                <td id="step5_10"></td>
+		            	                <td id="step5_6"></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td colspan = "8"><b>Первый подключ (K1)</b></td>
+		            	            </tr>
+		            	         </table>
+		            	        	
+	            	        	</div>
+	<!--_______________________________________________________________________-->
+								<div class="block-sdes2">
+									<div class="LS">
+										<div>Результат циклической перестановки разделяется на две равные части по пять бит
+										 	 каждая, и отдельно для каждой из частей выполняется циклический сдвиг
+										 	 влево на две позиции (LS-2). </div>
+										<input type="submit" class="btn btn-warning sdes" name="submit4" id="step7" value="Выполнить"/>
+									 	<table class="table table-bordered">
+				            	            <tr style="background-color: white;">
+				            	            	<td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_5"></td>
+				            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_2"></td>
+				            	            	<td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_7"></td>
+				            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_4"></td>
+				            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_3"></td>
+				            	               
+				            	            </tr>
+				            	            <tr>
+				            	                <td colspan = "5"><b>LS-2</b></td>
+				            	            </tr>
+				            	            <tr style="background-color: white;">
+												
+				            	                <td id="step7_7"></td>
+				            	                <td id="step7_4"></td>
+				            	                <td id="step7_3"></td>
+				            	                <td id="step7_5"></td>
+				            	                <td id="step7_2"></td>
+				            	            </tr>
+				            	        </table>
+			            	        	<table class="table table-bordered">
+			            	            <tr style="background-color: white;">
+											<td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_1"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_9"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_8"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_6"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" id="step6_10"></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "5"><b>LS-2</b></td>
+			            	            </tr>
+			            	            <tr style="background-color: white;">
+			            	            	
+			            	                <td id="step7_8"></td>
+			            	                <td id="step7_6"></td>
+			            	                <td id="step7_10"></td>
+			            	                <td id="step7_1"></td>
+			            	                <td id="step7_9"></td>
+			            	            </tr>
+			            	        </table>
+	            	        		</div>
+		            	        	<br>
+		            	        	<div>К полученным данным применяется применяется
+										 перестановка P8. В результате применения этой перестановки из 10-
+										 битового ключа сначала выбираются, а затем переставляются 8 битов.
+										 В результате этой операции получается второй подключ (K2).</div>
+		            	        	<input type="submit" class="btn btn-warning sdes" name="submit5" id="step9" value="Результат"/>
+		            	        	<table class="table table-bordered">
+			            	            <tr>
+			            	                <td>1</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>4</td>
+			            	                <td>5</td>
+			            	                <td>6</td>
+			            	                <td>7</td>
+			            	                <td>8</td>
+			            	                <td>9</td>
+			            	                <td>10</td>
+			            	            </tr>
+			            	            <tr style="background-color: white;">
+			            	            	<td id="step8_7"></td>
+			            	                <td id="step8_4"></td>
+			            	                <td id="step8_3"></td>
+			            	                <td id="step8_5"></td>
+			            	                <td id="step8_2"></td>
+			            	                
+			            	                <td id="step8_8"></td>
+			            	                <td id="step8_6"></td>
+			            	                <td id="step8_10"></td>
+											<td id="step8_1"></td>
+			            	                <td id="step8_9"></td>
+			            	                
+			            	            </tr>
+			            	            <tr>
+			            	            	<td rowspan = "4"></td>
+			            	                <td colspan = "8"> <b>P - 8</b></td>
+			            	                <td rowspan = "4"></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td>6</td>
+			            	                <td>3</td>
+			            	                <td>7</td>
+			            	                <td>4</td>
+			            	                <td>8</td>
+			            	                <td>5</td>
+			            	                <td>10</td>
+			            	                <td>9</td>
+			            	            </tr>
+			            	            <tr style="background-color: white;">
+			            	                <td id="step9_8"></td>
+			            	                <td id="step9_3"></td>
+			            	                <td id="step9_6"></td>
+			            	                <td id="step9_5"></td>
+			            	                <td id="step9_10"></td>
+			            	                <td id="step9_2"></td>
+			            	                <td id="step9_9"></td>
+			            	                <td id="step9_1"></td>
+			            	            </tr>
+			            	            <tr>
+		            	                	<td colspan = "8"><b>Второй подключ (K2)</b></td>
+		            	            	</tr>
+			            	         </table>
+		            	        </div>
+	            	        </form>
+            	        </center>
+            	    </div>
+            	    <div class="gener-key">
+            	    	<h2>2. Шифрование</h2>
+						<center>
+							<p>Введите необходимые данные.</p>
+	            	    	<form class="form-inline sdes-enscription">
+		            	        	<table class="table table-bordered">
+			            	            <tr>
+			            	                <td colspan = "10"><b>Исходный текст</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td>1</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>4</td>
+			            	                <td>5</td>
+			            	                <td>6</td>
+			            	                <td>7</td>
+			            	                <td>8</td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td><input type="text" id="text8" name="t1" pattern="[0-9]" maxlength="1" value="0" required/></td>
+			            	                <td><input type="text" id="text8" name="t2" pattern="[0-9]" maxlength="1" value="1" required/></td>
+			            	                <td><input type="text" id="text8" name="t3" pattern="[0-9]" maxlength="1" value="1" required/></td>
+			            	                <td><input type="text" id="text8" name="t4" pattern="[0-9]" maxlength="1" value="0" required/></td>
+			            	                <td><input type="text" id="text8" name="t5" pattern="[0-9]" maxlength="1" value="1" required/></td>
+			            	                <td><input type="text" id="text8" name="t6" pattern="[0-9]" maxlength="1" value="1" required/></td>
+			            	                <td><input type="text" id="text8" name="t7" pattern="[0-9]" maxlength="1" value="0" required/></td>
+			            	                <td><input type="text" id="text8" name="t8" pattern="[0-9]" maxlength="1" value="1" required/></td>
+			
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "10"><b>Введите K1</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: white;"><input type="text" id="key_1" name="k1" pattern="[0-1]" maxlength="1" value="1" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key_2" name="k2" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key_3" name="k3" pattern="[0-1]" maxlength="1" value="1" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key_4" name="k4" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key_5" name="k5" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key_6" name="k6" pattern="[0-1]" maxlength="1" value="1" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key_7" name="k7" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key_8" name="k8" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "10"><b>Введите K2</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: white;"><input type="text" id="key2_1" name="k21" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key2_2" name="k22" pattern="[0-1]" maxlength="1" value="1" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key2_3" name="k23" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key2_4" name="k24" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key2_5" name="k25" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key2_6" name="k26" pattern="[0-1]" maxlength="1" value="0" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key2_7" name="k27" pattern="[0-1]" maxlength="1" value="1" required/></td>
+			            	                <td style="background-color: white;"><input type="text" id="key2_8" name="k28" pattern="[0-1]" maxlength="1" value="1" required/></td>
+			            	            </tr>
+		            	            </table><br>
+		            	    </form>
+		            	    <div class="block-sdes">
+		            	    	<h3>Раунд 1</h3>
+		            	         <form class="form-inline sdes-enscription"> 
+	            	              	<div>1. К исходному тексту необходимо применить первоначальную IP перестановку. 
+	            	              			Результат перестановки нужно разбить на блоки по 4 бита.</div>
+	            	              	<input type="submit" class="btn btn-warning sdes" name="subtext1" id="text1" value="Выполнить"/>
+	            	            
+		            	            <table class="table table-bordered">
+		            	            <tr>
+		            	                <td colspan = "10"><b>IP</b></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td>2</td>
+		            	                <td>6</td>
+		            	                <td>3</td>
+		            	                <td>1</td>
+		            	                <td>4</td>
+		            	                <td>8</td>
+		            	                <td>5</td>
+		            	                <td>7</td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td style="background-color: rgba(173, 255, 47, 0.7);" class="L1" id="text1_2"></td>
+		            	                <td style="background-color: rgba(173, 255, 47, 0.7);" class="L2" id="text1_6"></td>
+		            	                <td style="background-color: rgba(173, 255, 47, 0.7);" class="L3" id="text1_3"></td>
+		            	                <td style="background-color: rgba(173, 255, 47, 0.7);" class="L4" id="text1_1"></td>
+		            	                <td style="background-color: lightskyblue" id="text1_4" class = " b"></td>
+		            	                <td style="background-color: lightskyblue" id="text1_8" class = " b"></td>
+		            	                <td style="background-color: lightskyblue" id="text1_5" class = " b"></td>
+		            	                <td style="background-color: lightskyblue" id="text1_7" class = " b"></td>
+		            	            </tr>
+		            	        </table>
+	            	            <br>
+	            	            	<div>2. НАЧАЛО РАУНДА 1. К четырём правым (голубым) битам результата IP перестановки применяется перестановка с расширением E/P (генерирование 8 бит из 4).
+	            	            		 К полученному сообщению с помощью операции сложения по модулю два (XOR) добавляется первый 8-битовый секретный
+										 подключ К1.</div>
+	            	            	<input type="submit" class="btn btn-warning sdes" name="subtext2" id="text3" value="Выполнить"/>
+		            	            
+		            	            <table class="table table-bordered">
+		            	            <tr>
+		            	            	<td colspan = 2 rowspan = 2></td>
+		            	                <td>1</td>
+		            	                <td>2</td>
+		            	                <td>3</td>
+		            	                <td>4</td>
+		            	                <td colspan = 2 rowspan = 2></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td style="background-color: lightskyblue"  id="text2_4" class = " t1"></td>
+		            	                <td style="background-color: lightskyblue"  id="text2_8" class = " t2"></td>
+		            	                <td style="background-color: lightskyblue"  id="text2_5" class = " t3"></td>
+		            	                <td style="background-color: lightskyblue"  id="text2_7" class = " t4"></td>
+		            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "10"><b>E/P</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td>4</td>
+			            	                <td>1</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>4</td>
+			            	                <td>1</td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td class="p_block" style="background-color: white;" id="text3_7"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text3_4"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text3_8"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text3_5"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_8"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_5"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_7"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_4"></td>
+			            	            </tr>
+			            	            
+			            	            <tr>
+			            	                <td colspan = "10"><b>E/P xor K1</b></td>
+	
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S0" id="xor4_1"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S1" id="xor4_2"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S1" id="xor4_3"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S0" id="xor4_4"></td>
+			            	                <td style="background-color: violet;" class="S2" id="xor4_5"></td>
+			            	                <td style="background-color: violet;" class="S3" id="xor4_6"></td>
+			            	                <td style="background-color: violet;" class="S3" id="xor4_7"></td>
+			            	                <td style="background-color: violet;" class="S2" id="xor4_8"></td>
+			            	            </tr>
+			            	        </table><br>
+	            	            	<div> 3.1  Первые четыре бита полученного сообщения поступают на вход
+									 	 блока замены S0, на выходе которого получается 2-битовая
+										 последовательность, а оставшиеся четыре бита – на вход блока замены S1, на
+										 выходе которого получается другая 2-битовая последовательность.</div>
+										 <a href="#openModal">Подробнее о блоках S0 и S1.</a>
+									<div> 3.2  Четыре бита, полученные на выходах блоков S0 и S1,
+										 преобразуются с помощью перестановки Р4.</div>
+									<div> 3.3 Необходимо выполнить бинарную операцию XOR над результатом 
+										 перестановки Р4 и левыми 4 (зелеными) битами первоначальной IP перестановки.</div>
+	            	            	<input type="submit" class="btn btn-warning sdes" name="subtext3" id="text6" value="Выполнить"/>
+		            	            <table class="table table-bordered">
+		            	            	<tr>
+		            	            		<td colspan="2">S-0</td>
+		            	            		<td colspan="2">S-1</td>
+		            	            	</tr>
+		            	            	<tr>
+		            	            		<td style="background-color: rgba(253, 233, 3, 0.7);" id="S1_1"></td>
+		            	            		<td style="background-color: rgba(253, 233, 3, 0.7);" id="S1_2"></td>
+		            	            		<td style="background-color: violet;" id="S2_1"></td>
+		            	            		<td style="background-color: violet;" id="S2_2"></td>
+		            	            	</tr>
+		            	            	<tr>
+			            	                <td>1</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>4</td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "4"><b>P4</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td>2</td>
+			            	                <td>4</td>
+			            	                <td>3</td>
+			            	                <td>1</td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: white" class="P1" id="S12_2"></td>
+			            	                <td style="background-color: white" class="P2" id="S22_2"></td>
+			            	                <td style="background-color: white" class="P3" id="S22_1"></td>
+			            	                <td style="background-color: white" class="P4" id="S12_1"></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "4"><b>L1 + P4</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: rgba(255, 140, 0, 0.56)" class="xor1" id="S13_2"></td>
+			            	                <td style="background-color: rgba(255, 140, 0, 0.56)" class="xor2" id="S23_2"></td>
+			            	                <td style="background-color: rgba(255, 140, 0, 0.56)" class="xor3" id="S23_1"></td>
+			            	                <td style="background-color: rgba(255, 140, 0, 0.56)" class="xor4" id="S13_1"></td>
+			            	            </tr>
+		            	            	</table>
+	            	    	</form>
+	            	    	</div>
+	            	    	<div class="block-sdes">
+	            	    		<h3>Раунд 2</h3>
+	            	    	<form class="form-inline sdes-enscription2">
+	            	              	<div>4. Между раундами шифрования используется функция SW, которая
+										меняет местами первые и последние четыре бита последовательности,
+										чтобы при следующем вызове функции FK последняя работала уже с другой
+										четверкой битов.</div>
+										<input type="submit" class="btn btn-warning sdes" name="subtext1" id="text2" value="Перейти далее"/>
+			            	            <table class="table table-bordered">
+		            	            <tr>
+		            	                <td colspan = "10"><b>SW</b></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td style="background-color: lightskyblue;" class="L1" id="text1_2" ></td>
+		            	                <td style="background-color: lightskyblue;" class="L2" id="text1_6"></td>
+		            	                <td style="background-color: lightskyblue;" class="L3" id="text1_3"></td>
+		            	                <td style="background-color: lightskyblue;" class="L4" id="text1_1"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text1_4" class = " g1"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text1_8" class = " g2"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text1_5" class = " g3"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text1_7" class = " g4"></td>
+		            	            </tr>
+		            	        </table>
+	            	            <br>
+	            	            	<div>5. НАЧАЛО РАУНДА 2. К четырём правым (оранжевым) битам результата SW перестановки применяется 
+	            	            		 перестановка с расширением E/P (генерирование 8 бит из 4). 
+	            	            		 К полученному сообщению с помощью операции сложения по модулю два (XOR) 
+	            	            		 добавляется первый 8-битовый секретный подключ К2.
+	            	            	</div>
+	            	            	<input type="submit" class="btn btn-warning sdes" name="subtext2" id="text3" value="Выполнить"/>
+		            	            <table class="table table-bordered">
+		            	            
+		            	            <tr>
+		            	            	<td colspan = 2 rowspan = 2></td>
+		            	                <td>1</td>
+		            	                <td>2</td>
+		            	                <td>3</td>
+		            	                <td>4</td>
+		            	                <td colspan = 2 rowspan = 2></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text2_4"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text2_8"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text2_5"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="text2_7"></td>
+		            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "10"><b>E/P</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td>4</td>
+			            	                <td>1</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>4</td>
+			            	                <td>1</td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td class="p_block" style="background-color: white;" id="text3_7"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text3_4"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text3_8"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text3_5"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_8"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_5"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_7"></td>
+			            	                <td class="p_block" style="background-color: white;" id="text31_4"></td>
+			            	            </tr>
+			            	            
+			            	            <tr>
+			            	                <td colspan = "10"><b>E/P xor K2</b></td>
+	
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S0" id="xor4_1"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S1" id="xor4_2"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S1" id="xor4_3"></td>
+			            	                <td style="background-color: rgba(253, 233, 3, 0.7);" class="S0" id="xor4_4"></td>
+			            	                <td style="background-color: violet;" class="S2" id="xor4_5"></td>
+			            	                <td style="background-color: violet;" class="S3" id="xor4_6"></td>
+			            	                <td style="background-color: violet;" class="S3" id="xor4_7"></td>
+			            	                <td style="background-color: violet;" class="S2" id="xor4_8"></td>
+			            	            </tr>
+			            	        </table>
+	            	            	<br>
+	            	            	<div> 6.1  Первые четыре бита полученного сообщения поступают на вход
+									 	 блока замены S0, на выходе которого получается 2-битовая
+										 последовательность, а оставшиеся четыре бита – на вход блока замены S1, на
+										 выходе которого получается другая 2-битовая последовательность.</div>
+										 <a href="#openModal">Подробнее о блоках S0 и S1.</a>
+										<div id="openModal" class="modalDialog">
+										    <div>
+										        <a href="#close" title="Закрыть" class="close">X</a>
+										        <h4>S-блоки</h4>
+										        <p>S-блоки работают следующим образом.
+													Для определения строки необходимо объединить биты 1 и 4 
+													и конвертировать их в десятичную систему. 
+													Для столбца - объединить биты 2 и 3 и преобразовать в десятичное число.
+													Элементы, находящиеся на пересечении соответствующих строки и столбца, необходимо конвертировать в двоичную систему.
+													Таким образом получают 2-битовые выходные значения.</p>
+												<p>
+													Например, если первые четыре бита последовательности равны 1010, то
+													выходные два бита задаются значением, которое находится на пересечении
+													строки (10) 2 и столбца (01) 1 блока S0. Аналогично для блока S1.	
+										        </p>
+										        <table class="table">
+											        <tbody><tr>
+											          <td width="16%" rowspan="5" bordercolor="#C0C0C0">
+											            <p align="left"><font><font class="">S0 =</font></font></p></td>
+											          <td width="16%" align="center" bordercolor="#C0C0C0">&nbsp;</td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c0</font></font></td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c1</font></font></td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c2</font></font></td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c3</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>r0</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>2</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>г1</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>2</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>r2</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>2</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>r3</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>2</font></font></td>
+											        </tr>
+											      </tbody></table>
+											    <table class="table">
+											        <tbody><tr>
+											          <td width="16%" rowspan="5" bordercolor="#C0C0C0">
+											            <p align="left"><font><font>S1 =</font></font></p></td>
+											          <td width="16%" align="center" bordercolor="#C0C0C0">&nbsp;</td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c0</font></font></td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c1</font></font></td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c2</font></font></td>
+											          <td width="17%" align="center" bordercolor="#C0C0C0" bgcolor="#FFFF00"><font><font>c3</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>r0</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>2</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>г1</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>2</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>r2</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											        </tr>
+											        <tr>
+											          <td width="16%" bordercolor="#C0C0C0" bgcolor="#FFFF00">
+											            <p align="center"><font><font>r3</font></font></p></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>2</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>1</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>0</font></font></td>
+											          <td width="17%" align="center" bgcolor="#00FFFF"><font><font>3</font></font></td>
+											        </tr>
+											      </tbody></table>
+										    </div>
+										</div>
+									<div> 6.2  Четыре бита, полученные на выходах блоков S0 и S1,
+										 преобразуются с помощью перестановки Р4.</div>
+									<div> 6.3 Необходимо выполнить бинарную операцию XOR над результатом 
+										 перестановки Р4 и правыми 4 (голубыми) битами SW перестановки.</div>
+										 
+	            	            	<input type="submit" class="btn btn-warning sdes" name="subtext3" id="text6" value="Выполнить"/>
+		            	            <table class="table table-bordered">
+		            	            	<tr>
+		            	            		<td colspan="2">S-0</td>
+		            	            		<td colspan="2">S-1</td>
+		            	            	</tr>
+		            	            	<tr>
+		            	            		<td style="background-color: rgba(253, 233, 3, 0.7);" id="S1_1"></td>
+		            	            		<td style="background-color: rgba(253, 233, 3, 0.7);" id="S1_2"></td>
+		            	            		<td style="background-color: violet;" id="S2_1"></td>
+		            	            		<td style="background-color: violet;" id="S2_2"></td>
+		            	            	</tr>
+		            	            	<tr>
+			            	                <td>1</td>
+			            	                <td>2</td>
+			            	                <td>3</td>
+			            	                <td>4</td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "4"><b>P4</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td>2</td>
+			            	                <td>4</td>
+			            	                <td>3</td>
+			            	                <td>1</td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: white" class="P1" id="S12_2"></td>
+			            	                <td style="background-color: white" class="P2" id="S22_2"></td>
+			            	                <td style="background-color: white" class="P3" id="S22_1"></td>
+			            	                <td style="background-color: white" class="P4" id="S12_1"></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td colspan = "4"><b>L1 + P4</b></td>
+			            	            </tr>
+			            	            <tr>
+			            	                <td style="background-color: #73da73" class="xor1" id="S13_2"></td>
+			            	                <td style="background-color: #73da73" class="xor2" id="S23_2"></td>
+			            	                <td style="background-color: #73da73" class="xor3" id="S23_1"></td>
+			            	                <td style="background-color: #73da73" class="xor4" id="S13_1"></td>
+			            	            </tr>
+		            	            	</table>
+	            	    	</form>
+	            	    	</div>
+	            	    	<div class="block-sdes">
+	            	    		<h3>Результат</h3>
+	            	    	<form class="form-inline sdes-enscription3">
+	            	              <div class="LS">
+	            	              	<div>7.1 На выходе второго раунда получаем 8-битовую последовательность, 
+	            	              		 состоящую из результата Раунда 2 и четверки левых (оранжевых) бит блока SW.</div>
+	            	              	<div>7.2 К полученной последовательнотси необходимо применять обратную начальной перестановку IP<sup>-1</sup> :</div>
+	            	              	<input type="submit" class="btn btn-warning sdes" name="subtext1" id="text9" value="Результат"/>
+		            	            <table class="table table-bordered">
+		            	            <tr>
+		            	                <td>1</td>
+		            	                <td>2</td>
+		            	                <td>3</td>
+		            	                <td>4</td>
+		            	                <td>5</td>
+		            	                <td>6</td>
+		            	                <td>7</td>
+		            	                <td>8</td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td style="background-color: #73da73" id="res1_1"></td>
+		            	                <td style="background-color: #73da73" id="res1_2"></td>
+		            	                <td style="background-color: #73da73" id="res1_3"></td>
+		            	                <td style="background-color: #73da73" id="res1_4"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="res1_5"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="res1_6"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="res1_7"></td>
+		            	                <td style="background-color: rgba(255, 140, 0, 0.56)" id="res1_8"></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td colspan = "10"><b>IP<sup>-1</sup></b></td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td>4</td>
+		            	                <td>1</td>
+		            	                <td>3</td>
+		            	                <td>5</td>
+		            	                <td>7</td>
+		            	                <td>2</td>
+		            	                <td>8</td>
+		            	                <td>6</td>
+		            	            </tr>
+		            	            <tr>
+		            	                <td style="background-color: white" id="res2_4" ></td>
+		            	                <td style="background-color: white" id="res2_1"></td>
+		            	                <td style="background-color: white" id="res2_3"></td>
+		            	                <td style="background-color: white" id="res2_5"></td>
+		            	                <td style="background-color: white" id="res2_7"></td>
+		            	                <td style="background-color: white" id="res2_2"></td>
+		            	                <td style="background-color: white" id="res2_8"></td>
+		            	                <td style="background-color: white" id="res2_6"></td>
+		            	            </tr>
+		            	        </table>
+	            	            </div><br>
+	            	    	</form>
+	            	    	</div>
+	            	    	</div>
+						</center>
+            	    </div>
+        		</div>
+				
+			</article>
+			<!-- /Article -->
+	</div>	
+        
+{% endblock %}

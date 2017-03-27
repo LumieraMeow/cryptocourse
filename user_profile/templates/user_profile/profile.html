@@ -1,0 +1,91 @@
+
+{% extends "course/index.html" %}
+
+{% block content %}
+<header id="head" class="secondary"></header>
+
+	<!-- container -->
+	<div class="container">
+
+		<ol class="breadcrumb">
+			<li><a href="{% url 'course:index' %}">Главная</a></li>
+			<li class="active">Пользователь</li>
+		</ol>
+    <div class="">
+    <h2>Вы вошли под именем <span style="color:#FF9B22;">{{ request.user.username }}</span>.</h2>
+    
+    <div class="grey_div">
+        {% load googlecharts %}
+        <table>
+            <tr>
+                <td style="vertical-align:top;">
+                    <h3>Ваши достижения:</h3>
+                    <h4  style="color:#57A225;">Пройдено заданий: {{attempts_task}}</h4>
+                    <h4  style="color:#57A225;">Пройдено тестов: {{attempts_test_count}}</h4>
+                    <h4  style="color:#57A225;">Средняя оценка: {{average_ball}} баллов &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <h3>Прогресс:</h3>
+                    <div id="count_progress"></div>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <h3>Оценки за тесты:</h3>
+                    <div id="grade_graph"></div>
+                </td>
+                
+            </tr>
+        </table>
+        
+        {% googlecharts %}
+        	
+            {% data values "grade" %}
+        		{% col "string" "Тест" %}"{{ val }}"{% endcol %}
+        		{% col "number" "Балл" %}{{ val }}{% endcol %}
+        	{% enddata %}
+
+
+            {% data progr "result" %}
+            	{% col "string" "Задания" %}"{{ val }}"{% endcol %}
+            	{% col "number" "Количество" %}{{ val }}{% endcol %}
+            {% enddata %}
+            
+        	{% options "grade_option" %}
+        		kind: "ColumnChart",
+        		options: {
+        			backgroundColor: "#DEDEDE",
+        			colors: ["#FDB872"],
+        			gridlineColor: "#000",
+        			legend: "none",
+        			vAxis: {minValue: 0},
+        			chartArea: {left: 40, top: 5, width: 350, height: 250},
+        			width: 400,
+        			height: 300
+        		}
+        	{% endoptions %}
+        	{% options "result_option" %}
+        		kind: "PieChart",
+        		options: {
+        			backgroundColor: "#DEDEDE",
+        			colors: ["#FF844D", "#83CA53"],
+        			gridlineColor: "#000",
+        			vAxis: {minValue: 0},
+        			chartArea: {left: 40, top: 5, width: 350, height: 250},
+        			width: 400,
+        			height: 300
+        			
+        		}
+        	{% endoptions %}
+        
+        	{% graph "grade_graph" "grade" "grade_option" %}
+        	{% graph "count_progress" "result" "result_option" %}
+        {% endgooglecharts %}
+    </div>
+    </div>
+</div>
+
+
+    
+
+{% endblock %}
