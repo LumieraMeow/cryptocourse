@@ -4,27 +4,28 @@
 <header id="head" class="secondary"></header>
 
 	<!-- container -->
-	<div class="container">
+	<div class="container-fluid">
 
 		<div class="row">
 			
 			<!-- Article main content -->
-			<article class="col-sm-9 maincontent">
+
 				<header class="page-header">
-					<h2 class="page-title">Калькулятор RSA</h2>
+					<h2 class="page-title title-calc">Калькулятор RSA</h2>
 				</header>
-				
+				<center>
 				<!-- Intro -->
             	<div class="container text-left ">
+            		
             	    <div class="gener-key">
             	        <form class="form-inline key" method="POST">
             	        	{% csrf_token %}
-            	            <h3>ШАГ1. Генерация ключей</h3>
+            	            <h3>ШАГ1. Начальные значения.</h3>
             	            <p>Вам необходимо выбрать любые большие простые числа <b>p</b> и <b>q</b>. 
             	            Простые числа — это целые положительные числа больше единицы, которые деляться только само себя и единицу.
             	            Введите числа <b>p</b> и <b>q</b>.</p>
             	            <center>
-	            	            <div class="block-f">
+	            	            <div class="block-background block-f">
 		            	            <p><div class="form-group has-feedback">
 		                	            <label for="p" class="control-label">p:</label>
 		                	            <input type="text" class="form-control" name="p"  required/>
@@ -47,7 +48,7 @@
 		            	            	<input type="text" class="form-control" name="f"/>
 		            	            </div>
 	            	            </div>
-	            	            <div class="block-f">
+	            	            <div class="block-background block-f">
 		            	            <div>
 		            	            <p>Для генерации ключей необходимо найти числа e и d. Это можно сделать путем факторизации чисел, которіе взаимно просты с функцией Эйлера. 
 		            	            Ниже приведены некоторые из них. Выберите любое число, факторизируйте его и получите числа e и d.</p>
@@ -63,13 +64,13 @@
             	        	{% csrf_token %}
             	        	<h3>ШАГ2. Факторизация чисел.</h3>
             	        	<center>
-            	        		<div class="block-fract">
+            	        		<div class="block-background block-fract">
             	        			<p> Введите число, которое хотите разложить на множители и нажмите кнопку "Разложить".</p>
 		            	        	<label for="k"  class="control-label">Число: </label>
 		            	            <input type="text" class="form-control" name="k" required/>
 		            	            <button type="submit" class="btn btn-warning" id="factoring">Разложить</button>
             	        		</div>
-            	        		<div class="block-fract">
+            	        		<div class="block-background block-fract">
             	        			<h4>Результат:</h4>
             	        			
             	        			<b><h3 class="data"></h3></b>
@@ -84,7 +85,7 @@
 	            	        <h3>ШАГ3. Генерация ключей.</h3>
 	            	        <p> После того, как была найдена подходящая пара чисел, необходимо проверить можно ли использовать их как компоненты e и d ключей RSA.</p>
 	            	        <center><div>
-	            	        	<div class="block-key">
+	            	        	<div class="block-background block-key">
 				            		<h4>Введите выбранные числа:</h4>
 				            		<p>
 				            			<label for="e"  class="control-label">e : </label>
@@ -105,7 +106,7 @@
 			            	        <button type="submit" class="btn btn-warning" id="gkey">Генерировать</button>  
 	            	        	</div>
 
-			            	    <div class="block-key">
+			            	    <div class="block-background block-key">
 			            	    	<h4>Результат:</h4>
 			            	    	<p class="p-key">Значения e и d удовлетворяют следующим условиям:</p>
 					            	<p class="p-key">1. Число е взаимно простое с функцией Эйлера (p-1)*(q-1)</p>
@@ -145,7 +146,7 @@
 							<p>Используя таблицу кодировки СР1251, поставив в соответствие каждому числу символ, получим исходное сообщение.</p>
 							<p><b>ВАЖНО:</b> Для шифрования и расшифровки необходимо вводить сообщения посимвольно в числовом формате.</p>
 	            	        <center><div>
-	            	        	<div class="block-cipher">
+	            	        	<div class="block-background block-cipher">
 				            		<h4>Введите ключи:</h4>
 				            		<br>
 				            		<p>
@@ -164,7 +165,7 @@
 				            	    </p>
 	            	        	</div>
 
-								<div class="block-cipher">
+								<div class="block-background block-cipher">
 			            	    	<h4>Шифрование:</h4>
 			            	    	<p>
 			            	    		<label for="msg"  class="control-label">Сообщение:</label>
@@ -180,7 +181,7 @@
 			            	    	
 			            	    </div>
 			            	    
-			            	    <div class="block-cipher">
+			            	    <div class="block-background block-cipher">
 			            	    	<h4>Расшифровка:</h4>
 			            	    	<p>
 			            	    		<label for="сipher"  class="control-label">Шифр:</label>
@@ -200,8 +201,7 @@
             	    </div>
             		
         		</div>
-				
-			</article>
+				</center>
 			<!-- /Article -->
 	</div>	
 </div>       

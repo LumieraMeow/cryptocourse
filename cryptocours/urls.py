@@ -24,7 +24,6 @@ urlpatterns = [
     url(r'^course/', include('course.urls')),
     url(r'^user/', include('user_profile.urls')),
     url(r'^test/', include('test_task.urls')),
-    url(r'^ctask/', include('control_task.urls')),
     url(r'^rsa/', include('calcRSA.urls')),
     url(r'^sdes/', include('sdes.urls')),
     url(r'^admin/', admin.site.urls),

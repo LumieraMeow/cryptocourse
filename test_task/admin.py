@@ -8,7 +8,7 @@ admin.site.register(User)
 
 class Answer_testInline(NestedStackedInline):
     model = Answer_test
-    extra = 3
+    extra = 1
     fk_name = 'test_question'
     
 class Test_questionInline(NestedStackedInline):

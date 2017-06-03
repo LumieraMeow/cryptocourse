@@ -1,7 +1,7 @@
 /*******************************/
 /*         Navigatioin         */
 /*******************************/
-.navbar-inverse { border-radius: 0; background:rgba(0, 0, 0, .8); border-bottom:1px solid rgba(255, 255, 255, 0.15); min-height:75px; padding-top:10px; margin-bottom:0;}
+.navbar-inverse { border-radius: 0; background:rgba(25, 25, 25, 1); border-bottom:1px solid rgba(255, 255, 255, 0.15); min-height:75px; padding-top:10px; margin-bottom:0;}
 .navbar-inverse *:focus { outline: 0; }
 @media (max-width: 767px) {
 	.navbar-inverse {  background:rgba(0,0,0,.9); }
@@ -28,7 +28,7 @@
 .navbar-nav .dropdown-menu {
 	left:-5px;
 	font-size: 13px;
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(25, 25, 25, .7);
 	border: 0px none;
 	-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;
 	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
@@ -65,7 +65,7 @@
 	text-shadow: 0 2px 1px rgba(0, 0, 0, .2);
 }
 
-.btn { padding: 10px 40px; font-weight: bold; border:0 none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
+.btn { padding: 10px 35px; font-weight: bold; border:0 none; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 .btn-lg { padding: 15px 65px; font-size: 14px; font-weight:bold; }
 .btn-default { text-shadow: none; background:transparent; color:rgba(50,50,50,.5); -webkit-box-shadow:inset 0px 0px 0px 3px rgba(50,50,50,.5); -moz-box-shadow:inset 0px 0px 0px 3px rgba(50,50,50,.5); box-shadow:inset 0px 0px 0px 3px rgba(50,50,50,.5); }
 	.btn-default:hover,

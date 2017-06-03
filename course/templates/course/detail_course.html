@@ -30,7 +30,7 @@
                             {% for task in task_list %}
                             
                                 <div class="grey_div" style="margin:5px;">
-                                <i class="fa fa-cogs fa-2x" id="ico"></i>&nbsp; <a href="{% url 'course:task' course.id forloop.counter %}"> {{ task.title }}</a>
+                                <i class="fa fa-cogs  fa-2x" id="ico"></i>&nbsp; <a href="{% url 'course:task' course.id forloop.counter %}"> {{ task.title }}</a>
                                 </div>
                             {% endfor %}
                         {% endif %}
@@ -38,7 +38,7 @@
                         {% if test_list %}
                             {% for test in test_list %}
                                 <div class="grey_div" style="margin:5px;">
-                                <i class="fa fa-cogs fa-2x" id="ico"></i>&nbsp; <a href="{% url 'test_task:index' course.id forloop.counter %}"> Тест. {{ test.name_test }}</a>
+                                <i class="fa fa-list-ol fa-2x" id="ico"></i>&nbsp; <a href="{% url 'test_task:index' course.id forloop.counter %}"> Тест. {{ test.name_test }}</a>
                                 </div>
                             {% endfor %}
                         {% endif %}

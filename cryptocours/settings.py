@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'user_profile',
     'nested_inline',
     'test_task',
-    'control_task',
     'calcRSA',
     'sdes',
 ]

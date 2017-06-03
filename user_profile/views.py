@@ -14,10 +14,6 @@ from django.utils import timezone
 class UserFormView(View):
     form_class = UserForm
 
-    # Ссылка, на которую будет перенаправляться пользователь в случае успешной регистрации.
-    # В данном случае указана ссылка на страницу входа для зарегистрированных пользователей.
-    #success_url = "/login/"
-
     # Шаблон, который будет использоваться при отображении представления.
     template_name = "user_profile/signup.html"
     
@@ -42,11 +38,9 @@ class UserFormView(View):
                 if user is not None:
                     if user.is_active:
                         login(request, user)
-                        print("ok")
                         return HttpResponse("ok")
                     else:
-                        print('ne ok')
-                        return HttpResponse("ne ok")
+                        return HttpResponse("not ok")
             else:
                     data = []
                     for k, v in form._errors.iteritems():
@@ -58,7 +52,6 @@ class UserFormView(View):
                         else:
                             text['key'] = '#id_%s' % k
                         data.append(text)
-                        print(text['key'])
                     return HttpResponse(json.dumps(data))
         else:
             return render(request, self.template_name, {'form':form})
@@ -76,11 +69,9 @@ def login_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    print("ok")
                     return HttpResponse("ok")
                 else:
-                    print()
-                    return HttpResponse("ne ok")
+                    return HttpResponse("not ok")
         else:
                 data = []
                 for k, v in form._errors.iteritems():
@@ -115,10 +106,19 @@ def index(request):
         for test in attempts_test:
             values.append([test.test_task, test.grade])
             average_ball+=test.grade
-        average_ball/=attempts_test.count()
-
-        return render(request, "user_profile/profile.html", {'values': values, 'progr' : progr, 
-        'average_ball':average_ball, 'attempts_task':attempts_task, 'attempts_test_count':attempts_test_count})
+        if attempts_test.count() != 0:
+            average_ball/=attempts_test.count()
+        else:
+            average_ball = 0
+        context = {
+            'values': values, 
+            'progr' : progr, 
+            'average_ball':average_ball, 
+            'attempts_task':attempts_task, 
+            'attempts_test_count':attempts_test_count
+            
+        }
+        return render(request, "user_profile/profile.html", context)
     else:
         return redirect("user_profile:login_view")
         

@@ -1,7 +1,7 @@
 <div  class="grade">Ваш результат: {{ grade }}</div>
 {% for test_question in test_question_list%}
     <div class="test-task">
-        <div class="test-task__number">Вопрос 1:</div>
+        <div class="test-task__number">Вопрос {{forloop.counter}}:</div>
         <div class="test-task__content"><p>{{test_question.question_text|linebreaksbr}}</p></div>
         <div class="test-task-result __noValid">
             {% for answer in answer_list %}
@@ -18,3 +18,4 @@
         </div>
     </div>
 {% endfor %}
+<center><a href="{% url 'course:detail_course' course_next %}" type="button" class="btn btn-warning">Далее</a></center>

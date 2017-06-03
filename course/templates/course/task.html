@@ -9,7 +9,8 @@
 		<ol class="breadcrumb">
 			<li><a href="{% url 'index' %}">Главная</a></li>
 			<li><a href="{% url 'course:index' %}">Курсы</a></li>
-			<li class="active">Задания</li>
+			<li><a href="{% url 'course:detail_course' course_id %}">Задания</a></li>
+			<li class="active">{{task.title}}</li>
 		</ol>
 			
 				
@@ -20,21 +21,21 @@
    		    	<div class="col-sm-6 task-block">
    		    		<div class="task">
    		    			<h3>Задание</h3>
-   		    			{{task.task|linebreaksbr}}
+   		    			<p>{{task.task|linebreaksbr}}</p>
    		    		</div>
 					<form action="{% url 'course:task' course_id task_id %}" method="post" id="task">
 						{% csrf_token %}
    		    			<input class="input-task" name="inputtask" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
    		    			{% if next_task %}
-		   		   		<center><a href="{% url 'course:task' course_id next_task %}"  id="button-task" type="button" class="btn btn-warning disabled">Next</a></center>
+		   		   		<center><a href="{% url 'course:task' course_id next_task %}"  id="button-task" type="button" class="btn btn-warning disabled">Далее</a></center>
 						{% else %}
-						<center><a href="{% url 'test_task:index' course_id test_id %}"  id="button-task" type="button" class="btn btn-warning disabled">Next</a></center>
+						<center><a href="{% url 'test_task:index' course_id test_id %}"  id="button-task" type="button" class="btn btn-warning disabled">Далее</a></center>
 		   		   		{% endif %}
 		   		    </form>
    				</div>
    				<div class="col-sm-5 theory "> 
-	   				<h3>Задание</h3>
-	   				{{task.theory|linebreaksbr}}
+	   				<h3>Теория</h3>
+	   				<p>{{task.theory|linebreaksbr}}</p>
    				</div>
 
             {% else %}

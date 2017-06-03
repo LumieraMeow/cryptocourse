@@ -1,5 +1,5 @@
 html{font-size:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-#task2 {
+ #task2 {
     border-right: 2px solid #FF9B22;
 }
 #ico {
@@ -9,6 +9,7 @@ html{font-size:100%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
         background: currentColor;
         padding-bottom:15px;
 }
+
 a{
     color: #FF9B22;
 }
@@ -19,10 +20,9 @@ a:hover, a:focus{
     color: #FF9B22;
 }
 .theory {
-    float:right;
-	height: 60vh;
-	padding: 15px;
-	margin-right:50px;
+    height: 60vh;
+    padding: 15px;
+    margin: 2%;
 	background: white; /* цвет фона, белый */
 	border: 1px solid #C1C1C1; /* размер и цвет границы блока */
 	border-radius:5px;
@@ -34,9 +34,9 @@ a:hover, a:focus{
     padding-right: 15px;
 }
 .task-block{
-    float:left;
     height: 60vh;
-    margin-left:50px;
+    min-height: 245px;
+    margin:2%;
     padding:15px;
     background:white;
     border-radius:5px;
@@ -59,6 +59,7 @@ a:hover, a:focus{
   display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  width: 60%;
   margin: 15px auto;
   box-sizing: border-box;
   padding: 2px 20px 3px;
@@ -180,18 +181,25 @@ a:hover, a:focus{
 .test-task-block{
     float: none;
     height: 60vh;
-    padding:15px;
+    padding:25px;
     background:white;
     border-radius:5px;
     overflow-y: scroll;
 }
 
+.div-tab{
+        display: table-cell;
+}
 /*КАЛЬКУЛЯТОР РСА*/
+.title-calc{
+    color: white;
+    margin-left: 14%;
+}
 .form-control{
     text-align: center;
 }
 .gener-key{
-    background: rgba(249,156,4,0.23);
+        background: #ffffff;
     
     border-radius:7px;
     margin-bottom: 10px;
@@ -204,24 +212,21 @@ a:hover, a:focus{
 .p-key, .error-key{
     display: none;
 }
-
-.block-f{
-    display:inline-block;
-    background: #EBC9F8;
-    border: 1px solid #ffffff;
+.block-background{
+    display:inline-block; 
+    background: #dedede;
+    border: 1px solid #a7a3a3;
     border-radius:5px;
     vertical-align:top;
+}
+.block-f{
+
     
     max-width: 520px;
     min-height:275px;
     padding: 10px;
 }
 .block-fract{
-    display:inline-block;
-    background: #EBC9F8;
-    border: 1px solid #ffffff;
-    border-radius:5px;
-    vertical-align:top;
     min-width: 440px;
     max-width: 440px;
     min-height:120px;
@@ -233,11 +238,6 @@ a:hover, a:focus{
         }
     }
 .block-key{
-    display:inline-block;
-    background: #EBC9F8;
-    border: 1px solid #ffffff;
-    border-radius:5px;
-    vertical-align:top;
     min-width: 440px;
     max-width: 440px;
     min-height:285px;
@@ -249,38 +249,13 @@ a:hover, a:focus{
         }
     }
 .block-cipher{
-    display:inline-block;
-    background: #EBC9F8;
-    border: 1px solid #ffffff;
-    border-radius:5px;
-    vertical-align:top;
+
     min-width: 340px;
     max-width: 340px;
     min-height:260px;
     padding: 15px;
 }
-.block-sdes{
-    display:inline-block;
-    background: #EBC9F8;
-    border: 1px solid #ffffff;
-    border-radius:5px;
-    vertical-align:top;
-    min-width: 340px;
-    max-width: 340px;
-    min-height:1335px;
-    padding: 15px;
-}
-.block-sdes2{
-    display:inline-block;
-    background: #EBC9F8;
-    border: 1px solid #ffffff;
-    border-radius:5px;
-    vertical-align:top;
-    min-width: 340px;
-    max-width: 340px;
-    min-height:600px;
-    padding: 15px;
-}
+
 .rsa-key{
     display: inline-block;
     width: 55px;
@@ -351,6 +326,20 @@ a:hover, a:focus{
 .close:hover { background: #fff; }
 
 /*CALCULATOR SDES*/
+.block-sdes{
+
+    min-width: 340px;
+    max-width: 340px;
+    min-height:1335px;
+    padding: 15px;
+}
+.block-sdes2{
+
+    min-width: 340px;
+    max-width: 340px;
+    min-height:600px;
+    padding: 15px;
+}
 .table {
     width: auto;
     border: 1px solid #c15305;

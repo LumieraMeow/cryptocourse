@@ -16,27 +16,20 @@
     
     <div class="grey_div">
         {% load googlecharts %}
-        <table>
-            <tr>
-                <td style="vertical-align:top;">
+                <div class="div-tab" >
                     <h3>Ваши достижения:</h3>
                     <h4  style="color:#57A225;">Пройдено заданий: {{attempts_task}}</h4>
                     <h4  style="color:#57A225;">Пройдено тестов: {{attempts_test_count}}</h4>
                     <h4  style="color:#57A225;">Средняя оценка: {{average_ball}} баллов &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</h4>
-                </td>
-                <td>&nbsp;</td>
-                <td>
+                </div>
+                <div  class="div-tab">
                     <h3>Прогресс:</h3>
                     <div id="count_progress"></div>
-                </td>
-                <td>&nbsp;</td>
-                <td>
+                </div>
+                <div  class="div-tab">
                     <h3>Оценки за тесты:</h3>
                     <div id="grade_graph"></div>
-                </td>
-                
-            </tr>
-        </table>
+                </div>
         
         {% googlecharts %}
         	

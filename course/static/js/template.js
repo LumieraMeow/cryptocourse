@@ -9,24 +9,26 @@ jQuery(document).ready(function($) {
 			"unpinned": "slideUp"
 		}
 	});
-	
-	
+  
 	 $("#task").on("keyup", function(e){
         e.preventDefault();
         var data = $(this).serialize();
         
         $.ajax({
-            type: "POST",
-            url: $(this).attr('action'),
-            data: data,
-            cache: false,
-            success: function(data){
-                if (data == 'ok'){
-                    $("#button-task").removeClass("disabled");
-                }
-
+          type: "POST",
+          url: $(this).attr('action'),
+          data: data,
+          cache: false,
+          success: function(data){
+            if (data == 'ok'){
+              $("#button-task").removeClass("disabled");
+              $(".input-task").css({"border": "2px solid rgba(4, 249, 50, 0.31)", "background": "rgba(39, 255, 0, 0.11)"});
             }
-       });
+            if (data == 'not ok'){
+              $(".input-task").css({"border": "2px solid rgba(249, 4, 4, 0.31)", "background": "rgba(255, 119, 0, 0.14)"});
+            }
+          }
+        });
     });
     
 	
@@ -44,7 +46,6 @@ jQuery(document).ready(function($) {
                     document.location.href = window.urls['signin_success'];
                 }
                 if (data != 'ok'){
-                    //$('#error-login').html(data);
                     var errors = $.parseJSON(data);
                     for (var i = 0; i < errors.length; i++) {
                         $("#error-login").html(errors[i].desc);
@@ -82,13 +83,10 @@ jQuery(document).ready(function($) {
     
     
     // TESTS
-    
         var $tasks;
         var test_id = 8;
         /* запуск теста */
-        function testRun(){
-            
-          //$('.timer').timer('run');
+      function testRun(){
           $tasks = $('.test-task');
           
           $tasks.first().addClass('__active');
@@ -98,6 +96,11 @@ jQuery(document).ready(function($) {
           $('#tasks').submitForm({
             
             prepare: function(data){
+              for (d in data) {
+                if(typeof(data[d])=="object")
+                  data[d] = data[d][0]
+              }
+              
               return {
                 id: test_id,
                 answers: JSON.stringify(data)
@@ -123,42 +126,22 @@ jQuery(document).ready(function($) {
         }
         
         function toggleCheckButton($task){
-          
           $('#check').addClass('disabled');
   
-          var $checks = $task.find('input[type=checkbox], input[type=radio]');
-          var $fields = $task.find('input[type=text]');
+          var $checks = $task.find('input[type=radio]');
           
           $checks.change(function(){
             var valid = false;
             
             $checks.each(function(idx, item){
+              
               if (item.checked)
                 valid = item.checked;
             });
             
             $('#check').toggleClass('disabled', !valid);
           });
-          
-          $fields.keyup(function(){
-            var valid = true;
-            
-            for(var i = 0;  field = $fields[i]; i++){
-              var value = $($fields[i]).val();
-              
-              if (!value)
-              {
-                valid = false;
-                break;
-              }
-            }
-            
-            $('#check').toggleClass('disabled', !valid);
-          });
-          
-          $fields.change(function(){
-            $(this).val($(this).val().replace('.', ','));
-          });
+
           
         }
         
@@ -170,15 +153,12 @@ jQuery(document).ready(function($) {
         }
         
         function taskCheck(){
-          
           if ($(this).hasClass('disabled'))
            return false;
   
           var $current = $('.test-task.__active');
           if ($current.is(':last-child'))
           {
-            //$('.timer').timer('stop');
-            
             $('#tasks').submit();
           }
           else
@@ -197,11 +177,9 @@ jQuery(document).ready(function($) {
           toggleSkipButton($current.next());
           
           $current.find('input').each(function(idx, item){
-            if (item.type == 'radio' || item.type == 'checkbox')
-              $(item).attr('checked', false);
+            if (item.type == 'radio')
             
-            if (item.type == 'text')
-              $(item).val('');
+              $(item).attr('checked', false);
           });
           
           $('.test-tasks-wrapper').append($current.clone());
@@ -209,10 +187,6 @@ jQuery(document).ready(function($) {
           
           $tasks = $('.test-task');
         }
-        
-        /*$('.timer').timer({
-          time: 180
-        });*/
         
         $('.test-run').on("click",function(){
           $.ajax({
@@ -237,7 +211,7 @@ jQuery(document).ready(function($) {
         
         $('#skip').click(taskSkip);
         $('#check').click(taskCheck);
-   
+    
 /*_____________КАЛЬКУЛЯТОР РСА______________*/
         function isEven(num) {
                 if (num % 2 === 0) return true
@@ -344,7 +318,7 @@ jQuery(document).ready(function($) {
               });
          });
 
-    		function PowerMod(x,p,N)
+    function PowerMod(x,p,N)
 		// Compute x^p mod N
 		{
 			var A = 1
@@ -403,6 +377,7 @@ function mod( m, n )
   $(".sdes-key").submit(function(ev){
 		  ev.preventDefault();
 		  var key = new Array(10);
+		  
   		  key[0] = $('input[name="1"]').val();
   		  key[1] = $('input[name="2"]').val();
   		  key[2] = $('input[name="3"]').val();
@@ -701,6 +676,3 @@ function mod( m, n )
   		return ""
 		}); 
 });
-        
-        
-

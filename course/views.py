@@ -12,19 +12,25 @@ import test_task
 
 #  Страница КУРСЫ
 def index(request):
-    latest_course_list = Course.objects.all()
-    for c in range(len(latest_course_list)):
-        latest_course_list[c].image_url = "/static/images/"+latest_course_list[c].image.url.split('/')[-1]
-    context = {'latest_course_list': latest_course_list}
-    return render(request, 'course/course.html', context)
+    if request.user.is_authenticated():
+        latest_course_list = Course.objects.all()
+        for c in range(len(latest_course_list)):
+            latest_course_list[c].image_url = "/static/images/"+latest_course_list[c].image.url.split('/')[-1]
+        context = {'latest_course_list': latest_course_list}
+        return render(request, 'course/course.html', context)
+    else:
+        return redirect("user_profile:login_view")
    
 # Список заданий    
 def detail_course(request, course_id):
-    course = Course.objects.get(id = course_id)
-    task_list = Task.objects.filter(course = course_id)
-    test_list = test_task.models.Test_task.objects.filter(course = course_id)
-    context = {'course':course,'task_list': task_list, 'test_list':test_list}
-    return render(request, 'course/detail_course.html', context)
+    if request.user.is_authenticated():
+        course = Course.objects.get(id = course_id)
+        task_list = Task.objects.filter(course = course_id)
+        test_list = test_task.models.Test_task.objects.filter(course = course_id)
+        context = {'course':course,'task_list': task_list, 'test_list':test_list}
+        return render(request, 'course/detail_course.html', context)
+    else:
+        return redirect("user_profile:login_view")   
   
 # Задание
 def task(request, course_id, task_id):
@@ -41,8 +47,8 @@ def task(request, course_id, task_id):
                 print("ok")
                 return HttpResponse("ok")
             else:
-                print("ne ok")
-                return HttpResponse("ne ok")
+                print("not ok")
+                return HttpResponse("not ok")
         else:
             if next_task:
                 context = {'task': task[0], 'course_id': course_id, 'task_id':task_id, 'next_task': int(task_id)+1}
